@@ -13,8 +13,8 @@ export const lessonssSlice = createSlice({
   name: "lessonss",
   initialState,
   reducers: {
-    addLessons: (state, action: PayloadAction<any>) => {
-      state.lessons = [...state.lessons, action.payload];
+    addLessons: (state, action: PayloadAction<ILesson[]>) => {
+      state.lessons = [...action.payload];
     },
   },
 });
