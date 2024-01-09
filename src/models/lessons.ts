@@ -8,3 +8,8 @@ export interface ILesson {
   hamdarsUserMaxUnitLevelPoint: number;
   hamdarsUserMinUnitLevelPoint: number;
 }
+
+export interface ILessonsResponse {
+  message?: string;
+  lessons: ILesson[];
+}
