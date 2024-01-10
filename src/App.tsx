@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getLessons } from "./api/lessons";
+import LessonDetails from "./components/LessonDetails";
 import Slider from "./components/Slider";
 import { addLessons } from "./features/lessons/lessonsSlice";
+import { StyledContainer } from "./styles";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,9 +18,10 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div className="flex h-screen overflow-hidden">
+    <StyledContainer>
+      <LessonDetails />
       <Slider />
-    </div>
+    </StyledContainer>
   );
 }
 

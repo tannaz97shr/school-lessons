@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectLessons } from "../../features/lessons/lessonsSlice";
 import { RootState } from "../../store";
 import SingleLessonSlide from "../singleLessoSlide";
+import { SliderContainer, SliderImage, SliderImageContainer } from "./styles";
 
 export default function Slider() {
   const dispatch = useDispatch();
@@ -32,8 +33,8 @@ export default function Slider() {
   // }, [sliderRef]);
 
   return (
-    <div className="w-full h-36 mt-auto relative">
-      <span className="circle"></span>
+    <SliderContainer>
+      {/* <span className="circle"></span> */}
       <div ref={sliderRef} className="keen-slider">
         {lessons.map((les, i) => (
           <div key={les.id + i} className="keen-slider__slide">
@@ -49,19 +50,19 @@ export default function Slider() {
                 }
               />
             ) : (
-              <div className={"pt-6 h-36"}>
-                <img
+              <SliderImageContainer>
+                <SliderImage
                   className={"mx-auto"}
                   width={70}
                   height={70}
                   src={les.unit_icon}
                   alt={les.name}
                 />
-              </div>
+              </SliderImageContainer>
             )}
           </div>
         ))}
       </div>
-    </div>
+    </SliderContainer>
   );
 }
