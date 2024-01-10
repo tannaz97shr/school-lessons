@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getLessons } from "./api/lessons";
-import Carousel from "./components/Slider";
+import Slider from "./components/Slider";
 import { addLessons } from "./features/lessons/lessonsSlice";
 
 function App() {
@@ -16,8 +16,8 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div className="App">
-      <Carousel />
+    <div className="App w-full">
+      <Slider />
     </div>
   );
 }
