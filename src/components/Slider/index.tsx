@@ -42,6 +42,11 @@ export default function Slider() {
                 src={les.unit_icon}
                 name={les.name}
                 level={les.hamdarsUserUnitLevelIndex}
+                percent={
+                  les.hamdarsUserCurrentUnitLevelPoint /
+                  (les.hamdarsUserMaxUnitLevelPoint -
+                    les.hamdarsUserMinUnitLevelPoint)
+                }
               />
             ) : (
               <div className={"pt-6 h-36"}>
