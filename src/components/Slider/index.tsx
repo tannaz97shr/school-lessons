@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLessons } from "../../features/lessons/lessonsSlice";
 import { RootState } from "../../store";
+import SingleLessonSlide from "../singleLessoSlide";
 
 export default function Slider() {
   const dispatch = useDispatch();
@@ -36,15 +37,23 @@ export default function Slider() {
       <div ref={sliderRef} className="keen-slider">
         {lessons.map((les, i) => (
           <div key={les.id + i} className="keen-slider__slide">
-            <div className={selectedIndex === i ? "" : "pt-6 h-36"}>
-              <img
-                className={"mx-auto"}
-                width={70}
-                height={70}
+            {selectedIndex === i ? (
+              <SingleLessonSlide
                 src={les.unit_icon}
-                alt={les.name}
+                name={les.name}
+                level={les.hamdarsUserUnitLevelIndex}
               />
-            </div>
+            ) : (
+              <div className={"pt-6 h-36"}>
+                <img
+                  className={"mx-auto"}
+                  width={70}
+                  height={70}
+                  src={les.unit_icon}
+                  alt={les.name}
+                />
+              </div>
+            )}
           </div>
         ))}
       </div>
