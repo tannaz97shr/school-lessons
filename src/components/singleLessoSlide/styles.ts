@@ -23,4 +23,5 @@ export const SingleLevel = styled.span`
   padding: 2px;
   background-color: #ffd633;
   width: fit-content;
+  margin: auto;
 `;
