@@ -3,6 +3,7 @@ import { ILesson } from "../../models/lessons";
 
 export interface lessonssState {
   lessons: ILesson[];
+  selectedLesson?: ILesson;
 }
 
 const initialState: lessonssState = {
@@ -16,9 +17,12 @@ export const lessonssSlice = createSlice({
     addLessons: (state, action: PayloadAction<ILesson[]>) => {
       state.lessons = [...action.payload];
     },
+    selectLessons: (state, action: PayloadAction<ILesson>) => {
+      state.selectedLesson = { ...action.payload };
+    },
   },
 });
 
-export const { addLessons } = lessonssSlice.actions;
+export const { addLessons, selectLessons } = lessonssSlice.actions;
 
 export default lessonssSlice.reducer;
