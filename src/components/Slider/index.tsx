@@ -15,7 +15,7 @@ export default function Slider() {
     loop: true,
     rtl: true,
     slides: {
-      perView: 3,
+      perView: 4,
       spacing: 10,
       origin: "center",
     },
@@ -25,18 +25,26 @@ export default function Slider() {
     dispatch(selectLessons(lessons[selectedIndex]));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lessons, selectedIndex]);
+
+  // useEffect(() => {
+  //   console.log("slide ref", sliderRef.prototype);
+  // }, [sliderRef]);
+
   return (
-    <div className="mt-auto bg-red-300 h-26 w-full">
+    <div className="w-full h-36 mt-auto relative">
+      <span className="circle"></span>
       <div ref={sliderRef} className="keen-slider">
         {lessons.map((les, i) => (
-          <div key={les.id} className="keen-slider__slide flex items-center">
-            <img
-              className="mx-auto"
-              width={selectedIndex === i ? 100 : 70}
-              height={selectedIndex === i ? 100 : 70}
-              src={les.unit_icon}
-              alt={les.name}
-            />
+          <div key={les.id + i} className="keen-slider__slide">
+            <div className={selectedIndex === i ? "" : "pt-6 h-36"}>
+              <img
+                className={"mx-auto"}
+                width={70}
+                height={70}
+                src={les.unit_icon}
+                alt={les.name}
+              />
+            </div>
           </div>
         ))}
       </div>

@@ -9,9 +9,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply min-h-screen;
 }
 
-#root {
-  @apply min-h-screen;
+.circle {
+  font-size: 200px;
+  color: transparent;
+  position: absolute;
+  bottom: -10rem;
+  box-shadow: 10px 10px 10px lightblue inset;
+  width: 120%;
+  height: 20rem;
+  border-radius: 50%;
+  left: -10%;
+  margin: auto;
 }
