@@ -1,27 +1,38 @@
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 
 export default function Slider() {
-  const [sliderRef, instanceRef] = useKeenSlider(
-    {
-      slideChanged() {
-        console.log("slide changed");
-      },
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+    slideChanged(slider) {
+      console.log(slider.track.details.rel);
+      setSelectedIndex(slider.track.details.rel);
     },
-    [
-      // add plugins here
-    ]
-  );
+    loop: true,
+    rtl: true,
+    slides: {
+      perView: 3,
+      spacing: 10,
+      origin: "center",
+    },
+  });
   const { lessons } = useSelector((state: RootState) => state.lessons);
   console.log("selectors lessons", lessons);
   return (
-    <div className="bg-red-300 w-full">
+    <div className="mt-auto bg-red-300 h-26 w-full">
       <div ref={sliderRef} className="keen-slider">
-        {lessons.map((les) => (
-          <div className="keen-slider__slide">
-            <img src={les.unit_icon} alt={les.name} />
+        {lessons.map((les, i) => (
+          <div key={les.id} className="keen-slider__slide flex items-center">
+            <img
+              className="mx-auto"
+              width={selectedIndex === i ? 100 : 70}
+              height={selectedIndex === i ? 100 : 70}
+              src={les.unit_icon}
+              alt={les.name}
+            />
           </div>
         ))}
       </div>
